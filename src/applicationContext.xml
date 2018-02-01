@@ -54,19 +54,20 @@
 	<!-- 事物管理器 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<!-- 数据源, 事物的操作是和数据库相关的，因为中间出现异常，
-		 需要数据库回滚数据。-->
+		 需要数据库回滚数据，不会让数据库数据出错。-->
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	<!-- 通知 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<!-- 传播行为 -->
+			<!-- 传播行为 ：除去查询类的，剩下的增删改都是REQUIRED，-->
 			<tx:method name="save*" propagation="REQUIRED"/>
 			<tx:method name="insert*" propagation="REQUIRED" />
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="create*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="transfer*" propagation="REQUIRED" />
 			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
 			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
 			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />

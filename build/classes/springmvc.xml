@@ -12,6 +12,10 @@
 
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven />
+	<!-- 注解驱动     对静态资源的访问：使用默认的处理方式而不是交给DispatcherServlet -->
+	<mvc:default-servlet-handler/>
+	
+	
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 路径前缀 -->

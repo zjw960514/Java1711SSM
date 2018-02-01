@@ -5,6 +5,10 @@
 
 <mapper namespace="com.situ.ssm.dao.StudentDao">
 	<select id="findAll" resultType="Student">
-		select * from student
+		select * from student;
+	</select>
+	
+	<select id="findByName"  resultType="Student">
+		select * from ${tableName} where stu_name like concat('%', #{Name}, '%');
 	</select>
 </mapper>
